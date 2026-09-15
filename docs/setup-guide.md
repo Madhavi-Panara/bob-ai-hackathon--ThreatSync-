@@ -1,30 +1,44 @@
 # Setup Guide
 
-> **This file is read by the automated evaluation pipeline. Be precise and complete.**
+> **ThreatSYNC is a Flask-based cybersecurity threat intelligence correlation
+and alert prioritisation assistant.
+
+The prototype ingests synthetic security alerts from multiple sources,
+correlates related alerts, assigns risk scores, maps activity to MITRE
+ATT&CK techniques, and generates BLUF (Bottom Line Up Front) incident
+summaries.**
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before running ThreatSYNC, install:
 
-- [ ] [e.g., Python 3.11+]
-- [ ] [e.g., Node.js 18+]
-- [ ] [e.g., Docker Desktop]
-- [ ] [e.g., An IBM Cloud account with watsonx.ai access]
+- Python 3.10 or newer
+- Git
+
+No Node.js, Docker, PostgreSQL, or external database is required for the
+current prototype.
+
+The demo uses synthetic alert data stored in JSON files.
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in the values:
+The current prototype can run without external credentials.
+
+An environment-variable template is provided at:
+
+```text
+src/.env.example
 
 ```bash
-cp .env.example .env
+cp src/.env.example src/.env
 ```
 
 | Variable | Description | Required |
 |---|---|---|
-| `WATSONX_API_KEY` | Your IBM watsonx.ai API key | Yes |
-| `WATSONX_PROJECT_ID` | Your watsonx.ai project ID | Yes |
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `SLACK_WEBHOOK_URL` | Slack webhook for alerts | No |
+| `WATSONX_API_KEY` | IBM watsonx.ai API key for future AI integration | No |
+| `WATSONX_PROJECT_ID` | IBM watsonx.ai project ID | No |
+| `DATABASE_URL` | Database connection string for future database integration | No |
+| `SLACK_WEBHOOK_URL` | Optional Slack notification webhook | No |
 
 ## Installation
 
@@ -46,28 +60,48 @@ cd [your-repo]
 ## Running the Application
 
 ```bash
-# Start the backend
-[your command — e.g.: uvicorn app.main:app --reload]
+From the repository root:
 
-# Start the frontend (in a separate terminal, if applicable)
-[your command — e.g.: cd frontend && npm run dev]
-```
+python src/app.py
 
-The application will be available at: `http://localhost:[PORT]`
+The Flask development server will start locally.
+
+Open:
+
+http://localhost:8000
+
+If the application reports a different port in the terminal, use the port
+shown by Flask.
+The application will be available at: `http://localhost:8000`
 
 ## Running Tests
 
 ```bash
 [your test command — e.g.: pytest tests/ -v]
+
+Application Structure
+src/
+├── app.py
+├── pipeline.py
+├── generate_alerts.py
+├── requirements.txt
+├── .env.example
+├── data/
+└── static/
 ```
 
 ## Quick Demo (Optional)
 
-If you have a demo script or sample data to showcase the project quickly:
+Start the application:
+python src/app.py
+Open the dashboard:
+http://localhost:8000
+Review the generated security alerts and prioritised incidents.
+Use the dashboard to inspect correlated alerts, risk levels, MITRE
+ATT&CK mappings, and BLUF summaries.
+If the application provides a simulation/generate-alert control, use it
+to create additional synthetic alerts and refresh the analysis.
 
-```bash
-[e.g.: python demo/seed_demo_data.py]
-[e.g.: open http://localhost:8000/demo]
 ```
 
 ## Troubleshooting
