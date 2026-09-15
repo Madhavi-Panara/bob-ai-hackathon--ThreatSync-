@@ -95,7 +95,7 @@ src/
 Start the application:
 python src/app.py
 Open the dashboard:
-http://localhost:8000
+http://localhost:5000
 Review the generated security alerts and prioritised incidents.
 Use the dashboard to inspect correlated alerts, risk levels, MITRE
 ATT&CK mappings, and BLUF summaries.
