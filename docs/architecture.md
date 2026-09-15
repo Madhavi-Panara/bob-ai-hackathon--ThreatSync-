@@ -10,7 +10,7 @@ graph TD
     D --> E[BLUF Report Generatorrule-based,watsonx.ai-ready]
     E -->|Publish| F[REST API/api/alerts /api/incidents/api/summary
 ]
-    F -->|Fetch| G|Dashboard FrontendHTML/JS| 
+    F -->|Fetch| G[Dashboard FrontendHTML/JS] 
 ```
 
 ## Components
