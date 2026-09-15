@@ -20,8 +20,7 @@ graph TD
 | Frontend | HTML/CSS/JavaScript (SPA) | Command Center dashboard, incident cards, alert search/filter, BLUF report modal |
 | Backend API | Flask (Python) |Serves REST endpoints, orchestrates the correlation → scoring → BLUF pipeline |
 | Correlation Engine | Custom Python logic (pipeline.py) |Groups related raw alerts into single incidents using shared source IP + time window |
-| Scoring & MITRE Mapping | Custom Python logic | Computes risk score (severity × asset value × corroboration), maps incidents to ATT&CK techniques |
-| AI / ML | watsonx.ai (Granite model) — architected, not connected in demo | Intended to generate natural-language BLUF summaries; offline rule-based generator used as the working fallback |
+| AI / ML | watsonx.ai (Granite model) — planned integration | Offline rule-based BLUF generator is used in the current demo |
 | Database | Static JSON file (alerts_data.json) | Holds the generated sample alert dataset; no database used in this prototype |
 
 ## Data Flow
