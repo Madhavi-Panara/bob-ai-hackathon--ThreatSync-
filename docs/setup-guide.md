@@ -72,7 +72,7 @@ http://localhost:8000
 
 If the application reports a different port in the terminal, use the port
 shown by Flask.
-The application will be available at: `http://localhost:8000`
+The application will be available at: `http://localhost:5000`
 
 ## Running Tests
 
