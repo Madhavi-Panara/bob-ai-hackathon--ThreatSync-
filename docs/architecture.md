@@ -7,10 +7,10 @@ graph TD
     A[Alert SourcesSIEM / CyberSensor /SatelliteFeed / IntelReport] -->|HTTP| B[Flask Backendpipeline.py]
     B -->|REST API| C[Correlation Engine]
     C -->|SDK| D[Scoring & MITRE ATT&CKMapping]
-    C --> E[BLUF Report Generatorrule-based,watsonx.ai-ready]
-    C -->|Publish| F[REST API/api/alerts /api/incidents/api/summary
+    D --> E[BLUF Report Generatorrule-based,watsonx.ai-ready]
+    E -->|Publish| F[REST API/api/alerts /api/incidents/api/summary
 ]
-    D -->|Dashboard FrontendHTML/JS| C
+    F -->|Dashboard FrontendHTML/JS| 
 ```
 
 ## Components
