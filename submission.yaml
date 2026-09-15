@@ -47,7 +47,7 @@ submission:
   tech_stack:
     languages: ["Python", "JavaScript", "HTML", "CSS"]                      # REQUIRED — e.g., ["Python", "TypeScript"]
     frameworks: ["Flask"]                     # e.g., ["FastAPI", "React"]
-    ibm_technologies: ["watsonx.ai"]               # e.g., ["watsonx.ai", "IBM Bob", "IBM Cloud Functions"]
+    ibm_technologies: [""]               # e.g., ["watsonx.ai", "IBM Bob", "IBM Cloud Functions"]
     databases: ["Static JSON file"]                      # e.g., ["PostgreSQL", "Redis"]
     other: []                          # e.g., ["Docker", "GitHub Actions", "Slack API"]
 
@@ -59,7 +59,7 @@ submission:
 
   known_limitations: >                 # Optional but recommended — be honest about gaps
     Integration with live enterprise security feeds and a production LLM such as watsonx.ai
-    is planned for future developement.
+    is planned for future development.
 # =============================================================================
 # ARTIFACT LOCATIONS
 # These paths are relative to the repo root. Only change if you moved files.
