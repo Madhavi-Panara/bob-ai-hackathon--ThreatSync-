@@ -39,10 +39,10 @@ submission:
 
   key_features:                        # REQUIRED — List 3 to 5 specific features you implemented
    - "Multi-source alert ingestion and normalization"
-    - "Alert correlation into related security incidents"
-    - "Explainable risk scoring and alert prioritisation"
-    - "MITRE ATT&CK technique mapping"
-    - "Commander-ready BLUF investigation summaries"
+   - "Alert correlation into related security incidents"
+   - "Explainable risk scoring and alert prioritisation"
+   - "MITRE ATT&CK technique mapping"
+   - "Commander-ready BLUF investigation summaries"
 
   tech_stack:
     languages: ["Python", "JavaScript", "HTML", "CSS"]                      # REQUIRED — e.g., ["Python", "TypeScript"]
@@ -52,13 +52,13 @@ submission:
     other: []                          # e.g., ["Docker", "GitHub Actions", "Slack API"]
 
   what_we_are_most_proud_of: >         # Optional but recommended — guides judges to your best work
-     Our strongest feature is the complete alert-to-decision pipeline. ThreatSYNC
+    Our strongest feature is the complete alert-to-decision pipeline. ThreatSYNC
     reduces a large volume of noisy alerts into correlated and prioritised
     incidents, maps the relevant MITRE ATT&CK techniques, and presents the
     result through concise BLUF reports in a commander-focused dashboard.
 
   known_limitations: >                 # Optional but recommended — be honest about gaps
-    --Integration with live enterprise security feeds and a production LLM such as watsonx.ai
+    Integration with live enterprise security feeds and a production LLM such as watsonx.ai
     is planned for future developement.
 # =============================================================================
 # ARTIFACT LOCATIONS
