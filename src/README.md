@@ -1,47 +1,52 @@
-# Source Code
+# ThreatSYNC — Commander's Threat Intelligence Dashboard
 
-Place all your project's source code in this folder.
+## What this builds
+ThreatSYNC is a hackathon-ready web dashboard for the D2 problem:
+- ingest alerts from SIEM, cyber sensors, satellite feeds and intelligence reports
+- normalize them into a common alert structure
+- correlate related alerts into incidents
+- calculate an explainable priority score
+- classify incidents as Critical / High / Medium / Low
+- map detected behavior to MITRE ATT&CK
+- generate BLUF (Bottom Line Up Front) summaries and recommended actions
 
-## Structure Guidelines
+## Dashboard
+1. Command Center
+2. Incident Management
+3. Alert Intelligence
+4. MITRE ATT&CK
+5. BLUF Reports
 
-Organize your code logically. Here are common patterns — use whatever fits
-your project:
+## Run with Python
+1. Install Python 3.
+2. Open this folder in VS Code.
+3. Open Terminal.
+4. Run:
+   pip install flask
+5. Then:
+   python app.py
+6. Open:
+   http://127.0.0.1:5000
 
-### Web Application
-```
-src/
-  backend/        ← API server code
-  frontend/       ← UI code
-  shared/         ← Shared utilities/types
-```
+## Project structure
+- app.py — Flask server/API
+- pipeline.py — correlation, scoring, MITRE mapping and BLUF logic
+- static/index.html — dashboard shell
+- static/app.js — dashboard interactions
+- static/style.css — dashboard styling
+- data/sample_alerts.json — sample multi-source alerts
+- data/mitre_lookup.json — ATT&CK reference data
 
-### Data / AI Project
-```
-src/
-  data/           ← Data ingestion / preprocessing
-  models/         ← ML model code
-  api/            ← Serving layer
-  notebooks/      ← Jupyter notebooks (exploration)
-```
+## Demo flow for judges
+Raw alerts → Normalize → Correlate → Prioritize → MITRE → BLUF → Commander
 
-### CLI / Script-based Tool
-```
-src/
-  cli/            ← CLI entry points
-  lib/            ← Core logic
-  utils/          ← Helpers
-```
+The included sample produces multiple correlated incidents so the dashboard can demonstrate the full workflow without external APIs.
 
-## Important Files to Include
-
-- `requirements.txt` or `package.json` — dependency manifest
-- `.env.example` — template for environment variables (NEVER commit `.env`)
-- Any database migration files
-- Configuration files
-
-## What NOT to Include in src/
-
-- `.env` files with real secrets
-- Large binary files (use Git LFS or link externally)
-- `node_modules/` or `venv/` (these are in `.gitignore`)
-- Build artifacts (`dist/`, `build/`, `__pycache__/`)
+## Future upgrades
+- real SIEM/API ingestion
+- satellite and cyber-sensor adapters
+- PostgreSQL/SQLite persistence
+- LLM-powered BLUF generation
+- analyst feedback loop
+- authentication and role-based access
+- live ATT&CK STIX updates
