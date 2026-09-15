@@ -1,0 +1,34 @@
+{
+  "T1021": {
+    "name": "Remote Services",
+    "tactic": "Lateral Movement"
+  },
+  "T1041": {
+    "name": "Exfiltration Over C2 Channel",
+    "tactic": "Exfiltration"
+  },
+  "T1059": {
+    "name": "Command and Scripting Interpreter",
+    "tactic": "Execution"
+  },
+  "T1071": {
+    "name": "Application Layer Protocol",
+    "tactic": "Command and Control"
+  },
+  "T1078": {
+    "name": "Valid Accounts",
+    "tactic": "Defense Evasion"
+  },
+  "T1110": {
+    "name": "Brute Force",
+    "tactic": "Credential Access"
+  },
+  "T1190": {
+    "name": "Exploit Public-Facing Application",
+    "tactic": "Initial Access"
+  },
+  "T1498": {
+    "name": "Network Denial of Service",
+    "tactic": "Impact"
+  }
+}
