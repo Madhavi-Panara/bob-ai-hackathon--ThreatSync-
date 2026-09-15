@@ -1,43 +1,42 @@
-# 🚀 [Your Project Title Here]
+# 🚀 ThreatSYNC — Threat Intelligence & Alert Prioritisation
 
-> ⚠️ **Replace everything in `[ ]` brackets with your actual content before submission.**
-
+> A threat intelligence platform that transforms thousands of noisy security alerts into prioritised, correlated incidents and commander-ready BLUF reports.
 ---
 
 ## 👥 Team
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
-| **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Name** | ThreatSYNC |
+| **Track** |  AI |
+| **Team Lead** | Margi Patel - 25dit058@charusat.edu.in |
+| **Members** | Nishi Patel , Dhruvi Senjaliya , Madhavi Panara |
 
 ---
 
 ## 🎯 Problem Statement
 
-> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
+Defence and security analysts receive thousands of alerts every day from different sources such as SIEM systems, cyber sensors, satellite feeds, and intelligence reports. These alerts are often noisy, duplicated, and presented in different formats, making it difficult to quickly identify genuine high-risk threats while avoiding false positives.
 
-[Describe the real-world problem your project addresses. Be specific about who the user is and what pain point they face.]
+ThreatSYNC addresses this problem by automatically processing, correlating, prioritising, and summarising these alerts.
 
 ---
 
 ## 💡 Solution
 
-> In 2–3 sentences: What did you build? How does it solve the problem above?
+ThreatSYNC is a web-based threat intelligence platform that ingests multi-source alerts and converts them into a common format. It correlates related alerts into incidents, calculates an explainable risk score, maps relevant threats to the MITRE ATT&CK framework, and generates concise BLUF (Bottom Line Up Front) reports.
 
-[Describe your solution clearly. Explain the core mechanism — what makes it work.]
+This allows analysts and commanders to focus on the most important threats instead of manually reviewing thousands of individual alerts.
 
 ---
 
 ## ✨ Key Features
 
-- **Feature 1:** [Brief description — e.g., "Real-time anomaly detection using watsonx.ai"]
-- **Feature 2:** [Brief description]
-- **Feature 3:** [Brief description]
-- **Feature 4:** [Optional]
-- **Feature 5:** [Optional]
+- **Multi-Source Alert Ingestion:** Processes alerts from SIEM, CyberSensor, SatelliteFeed, and IntelReport sources.
+- **Alert Correlation:** Groups related alerts based on common indicators such as source IP and time window to reduce alert noise.
+- **Risk Scoring & Prioritisation:** Uses an explainable scoring system based on severity, asset value, and corroborating alerts to classify incidents as LOW, MEDIUM, HIGH, or CRITICAL.
+- **MITRE ATT&CK Mapping:** Maps detected threat behaviour to relevant MITRE ATT&CK techniques.
+- **BLUF Reports:** Generates concise Bottom Line Up Front summaries with recommended actions for faster decision-making.
 
 ---
 
@@ -45,51 +44,50 @@
 
 | Category | Technologies |
 |---|---|
-| **Languages** | [e.g., Python, TypeScript] |
-| **Frameworks** | [e.g., FastAPI, React] |
-| **IBM Technologies** | [e.g., watsonx.ai, IBM Bob, IBM Cloud] |
-| **Databases** | [e.g., PostgreSQL, Redis] |
-| **Other** | [e.g., Docker, GitHub Actions] |
+| **Languages** | Python, JavaScript, HTML, CSS |
+| **Frameworks** | Flask API |
+| **IBM Technologies** | watsonx.ai |
+| **Databases** |  |
+| **Other** | MITRE ATT&CK, GitHub |
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── src/                  # All source code
-├── docs/                 # Written documentation
-│   ├── problem-statement.md
-│   ├── solution-overview.md
-│   ├── architecture.md
-│   └── setup-guide.md
-├── demo/                 # Demo artifacts
-│   ├── screenshots/      # App screenshots
-│   └── demo-video-link.txt  # Link to demo video
-├── presentation/         # Slide deck
-└── submission.yaml       # Structured submission metadata
-```
+├── data/
+│   ├── mitre_lookup.json
+│   └── sample_alerts_1200.json
+│
+├── static/
+│   ├── app.js
+│   ├── index.html
+│   └── style.css
+│
+├── app.py
+├── pipeline.py
+├── generate_alerts.py
+├── README.md
+├── requirements.txt
+└── START_HERE.txt
 
 ---
 
 ## ⚡ How to Run
 
-> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
+1. Clone the repository
+git clone https://github.com/Madhavi-Panara/bob-ai-hackathon--ThreatSync-.git
+cd bob-ai-hackathon--ThreatSync-
 
-```bash
-# 1. Clone the repo
-git clone https://github.com/[your-repo].git
-cd [your-repo]
+2. Install dependencies
+pip install -r requirements.txt
 
-# 2. Install dependencies
-[your install command here]
+3. Run the Flask application
+python app.py
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env with your values
-
-# 4. Run the project
-[your run command here]
-```
+4. Open the dashboard
+Open this in your browser:
+http://127.0.0.1:5000
 
 ---
 
@@ -106,16 +104,17 @@ cp .env.example .env
 
 ## ⚠️ Known Limitations
 
-> Be honest — judges appreciate transparency over overclaiming.
-
-- [Limitation 1: e.g., "Authentication is mocked — not production-ready"]
-- [Limitation 2: e.g., "Only tested on Chrome"]
-- [Limitation 3: e.g., "Feature X is scaffolded but not fully implemented"]
-
----
+--The current prototype uses generated/simulated threat-alert data rather than live enterprise security feeds.
+--Alert correlation and risk scoring are currently rule-based and designed to be explainable.
+--BLUF generation is currently rule-based and structured to be ready for future integration with an LLM such as watsonx.ai.
+--The current prototype is intended as a demonstration and is not a production-grade security monitoring system.
 
 ## 🏅 What We're Most Proud Of
 
-[Tell the judges what part of your submission is strongest and worth paying close attention to.]
+We are most proud of building an end-to-end threat intelligence pipeline that transforms a large volume of noisy alerts into a smaller number of prioritised incidents.
+
+ThreatSYNC combines ingestion, normalization, correlation, explainable risk scoring, MITRE ATT&CK mapping, and BLUF generation into one dashboard, allowing decision-makers to quickly understand what happened, how serious it is, and what action should be taken.
+
+--still needed to implement the watson.ai in the project.
 
 ---
