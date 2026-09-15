@@ -32,11 +32,11 @@ This allows analysts and commanders to focus on the most important threats inste
 
 ## ✨ Key Features
 
-- **Multi-Source Alert Ingestion:** Processes alerts from SIEM, CyberSensor, SatelliteFeed, and IntelReport sources.
-- **Alert Correlation:** Groups related alerts based on common indicators such as source IP and time window to reduce alert noise.
-- **Risk Scoring & Prioritisation:** Uses an explainable scoring system based on severity, asset value, and corroborating alerts to classify incidents as LOW, MEDIUM, HIGH, or CRITICAL.
-- **MITRE ATT&CK Mapping:** Maps detected threat behaviour to relevant MITRE ATT&CK techniques.
-- **BLUF Reports:** Generates concise Bottom Line Up Front summaries with recommended actions for faster decision-making.
+**Multi-Source Alert Ingestion:** Processes alerts from SIEM, CyberSensor, SatelliteFeed, and IntelReport sources.
+**Alert Correlation:** Groups related alerts based on common indicators such as source IP and time window to reduce alert noise.
+**Risk Scoring & Prioritisation:** Uses an explainable scoring system based on severity, asset value, and corroborating alerts to classify incidents as LOW, MEDIUM, HIGH, or CRITICAL.
+**MITRE ATT&CK Mapping:** Maps detected threat behaviour to relevant MITRE ATT&CK techniques.
+**BLUF Reports:** Generates concise Bottom Line Up Front summaries with recommended actions for faster decision-making.
 
 ---
 
@@ -104,10 +104,10 @@ http://127.0.0.1:5000
 
 ## ⚠️ Known Limitations
 
---The current prototype uses generated/simulated threat-alert data rather than live enterprise security feeds.
---Alert correlation and risk scoring are currently rule-based and designed to be explainable.
---BLUF generation is currently rule-based and structured to be ready for future integration with an LLM such as watsonx.ai.
---The current prototype is intended as a demonstration and is not a production-grade security monitoring system.
+The current prototype uses generated/simulated threat-alert data rather than live enterprise security feeds.
+Alert correlation and risk scoring are currently rule-based and designed to be explainable.
+BLUF generation is currently rule-based and structured to be ready for future integration with an LLM such as watsonx.ai.
+The current prototype is intended as a demonstration and is not a production-grade security monitoring system.
 
 ## 🏅 What We're Most Proud Of
 
@@ -115,6 +115,6 @@ We are most proud of building an end-to-end threat intelligence pipeline that tr
 
 ThreatSYNC combines ingestion, normalization, correlation, explainable risk scoring, MITRE ATT&CK mapping, and BLUF generation into one dashboard, allowing decision-makers to quickly understand what happened, how serious it is, and what action should be taken.
 
---still needed to implement the watson.ai in the project.
+still needed to implement the watson.ai in the project.
 
 ---
