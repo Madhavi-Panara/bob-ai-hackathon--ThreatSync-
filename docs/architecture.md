@@ -2,48 +2,44 @@
 
 ## System Architecture
 
-[Describe the overall architecture of your system. Replace the Mermaid diagram below with your actual architecture.]
-
 ```mermaid
 graph TD
-    A[User / Browser] -->|HTTP| B[Frontend - React]
-    B -->|REST API| C[Backend - FastAPI]
-    C -->|SDK| D[watsonx.ai]
-    C -->|Query| E[PostgreSQL]
-    C -->|Publish| F[Slack Webhook]
-    D -->|Inference Result| C
+    A[Alert SourcesSIEM / CyberSensor /SatelliteFeed / IntelReport] -->|HTTP| B[Flask Backendpipeline.py]
+    B -->|REST API| C[Correlation Engine]
+    C -->|SDK| D[Scoring & MITRE ATT&CKMapping]
+    C --> E[BLUF Report Generatorrule-based,watsonx.ai-ready]
+    C -->|Publish| F[REST API/api/alerts /api/incidents/api/summary
+]
+    D -->|Dashboard FrontendHTML/JS| C
 ```
 
 ## Components
 
 | Component | Technology | Responsibility |
 |---|---|---|
-| Frontend | [e.g., React 18] | [e.g., Dashboard UI, user interaction] |
-| Backend API | [e.g., FastAPI] | [e.g., Business logic, orchestration] |
-| AI / ML | [e.g., watsonx.ai] | [e.g., Anomaly scoring, classification] |
-| Database | [e.g., PostgreSQL] | [e.g., Storing pipeline events and scores] |
-| Notifications | [e.g., Slack API] | [e.g., Alerting on threshold breaches] |
+| Frontend | HTML/CSS/JavaScript (SPA) | Command Center dashboard, incident cards, alert search/filter, BLUF report modal |
+| Backend API | Flask (Python) |Serves REST endpoints, orchestrates the correlation → scoring → BLUF pipeline |
+| Correlation Engine | Custom Python logic (pipeline.py) |Groups related raw alerts into single incidents using shared source IP + time window |
+| Scoring & MITRE Mapping | Custom Python logic | Computes risk score (severity × asset value × corroboration), maps incidents to ATT&CK techniques |
+| AI / ML | watsonx.ai (Granite model) — architected, not connected in demo | Intended to generate natural-language BLUF summaries; offline rule-based generator used as the working fallback |
+| Database | Static JSON file (alerts_data.json) | Holds the generated sample alert dataset; no database used in this prototype |
 
 ## Data Flow
 
-[Describe how data moves through your system from input to output.]
-
-1. [e.g., Pipeline logs are ingested via a webhook from GitHub Actions]
-2. [e.g., Logs are preprocessed and chunked into 512-token segments]
-3. [e.g., Each chunk is sent to the watsonx.ai inference endpoint]
-4. [e.g., Anomaly scores are stored in PostgreSQL]
-5. [e.g., The React dashboard polls the API every 30 seconds to refresh]
+1. Raw alerts (from SIEM, CyberSensor, SatelliteFeed, and IntelReport) are loaded from a generated JSON dataset simulating a live multi-source feed.
+2. The correlation engine groups alerts sharing a source IP within a 30-minute window into a single incident.
+3. Each incident is scored using a weighted formula (severity × asset value × number of corroborating alerts) and classified as CRITICAL, HIGH, MEDIUM, or LOW.
+4. Each incident is matched against a MITRE ATT&CK technique lookup table via keyword analysis of its alert descriptions.
+5. A BLUF (Bottom Line Up Front) report is generated per incident — currently via a rule-based generator, with the code path already built to call watsonx.ai instead.
+6. The Flask backend exposes this processed data through REST endpoints (/api/alerts, /api/incidents, /api/summary).
+7. The dashboard frontend fetches from these endpoints and renders the raw feed, ranked incidents, and BLUF detail view; the Refresh button re-triggers the fetch cycle.
 
 ## Security Considerations
 
-[Note any security decisions relevant to the architecture — even if basic.]
-
-- [e.g., API keys stored in environment variables, never committed to git]
-- [e.g., All API routes require a Bearer token]
-- [e.g., Database credentials rotated via IBM Secrets Manager]
+--API keys and credentials (for the watsonx.ai integration) are stored in a .env file, excluded from version control via .gitignore — never hardcoded in source.
+--The watsonx.ai integration includes a try/except fallback: if the API call fails or credentials are missing, the system automatically falls back to the offline generator rather than exposing an error or crashing.
+--No real production security data is used — the dataset is entirely synthetic and generated for demonstration purposes.
 
 ## Scalability Notes
 
-[Optional: how would this scale beyond the hackathon prototype?]
-
-[e.g., "The FastAPI backend is stateless and could be horizontally scaled behind a load balancer. The watsonx.ai calls are the bottleneck and would benefit from request batching."]
+--The Flask backend is currently stateless per request and reads from a static JSON file, so it could be extended to read from a real database (e.g., PostgreSQL) or live message queue (e.g., Kafka) without changing the correlation/scoring logic itself. The correlation step is currently O(n²) over the alert set for simplicity — at production scale (real-time feeds with millions of alerts), this would need to move to an indexed, streaming-window approach (e.g., grouping by source IP in a time-bucketed store) rather than pairwise comparison. The BLUF generation step, once connected to watsonx.ai, would become the primary latency bottleneck and would benefit from batching multiple incidents per API call.
