@@ -37,12 +37,12 @@ submission:
     assigns explainable risk scores, maps threats to MITRE ATT&CK techniques,
     and generates concise BLUF reports for faster decision-making.
 
-  key_features:                        # REQUIRED — List 3 to 5 specific features you implemented
-   - "Multi-source alert ingestion and normalization"
-   - "Alert correlation into related security incidents"
-   - "Explainable risk scoring and alert prioritisation"
-   - "MITRE ATT&CK technique mapping"
-   - "Commander-ready BLUF investigation summaries"
+  key_features:
+    - "Multi-source alert ingestion and normalization"
+    - "Alert correlation into related security incidents"
+    - "Explainable risk scoring and alert prioritisation"
+    - "MITRE ATT&CK technique mapping"
+    - "Commander-ready BLUF investigation summaries"
 
   tech_stack:
     languages: ["Python", "JavaScript", "HTML", "CSS"]                      # REQUIRED — e.g., ["Python", "TypeScript"]
